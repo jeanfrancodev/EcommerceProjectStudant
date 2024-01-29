@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+body {
+  font-family: 'open sans';
+}
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 32.4rem;
+  width: 100%;
+  margin: 0 auto;
+  /* margin-bottom: 2.4rem; */
+  max-width: 1200px;
+  gap: 2rem;
+  background-color: #fafafb;
+}
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 2rem 0rem 2rem;
+  align-items: center;
+  height: 4rem;
+  font-size: 20pt;
+  font-weight: 600;
+  background-color: MidnightBlue;
+  color: white;
+}
+.container-header-right{
+  display: flex;
+  gap: 16px;
+}
+a{
+ color: white;
+ font-size: 14px;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.product {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  padding: 1rem;
+  gap: 3rem;
+  border: 1px solid white;
+  background-color: white;
+  box-shadow: 0px 0px 3px 0px lightgray;
+  border-radius: 16px;
+  margin: 1rem 3rem 1rem;
+}
+img {
+  width: 250px;
+  height: 380px;
+  object-fit: contain;
+}
+.description-product {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.title-product {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: start;
+  color: gray;
+}
+.price-cart-product {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.price-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 2rem;
+  margin: 0;
+  border: 1px solid blue;
+  background-color: white;
+  color: blue;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.cartButton {
+  border: none;
+  color: white;
+  background-color: red;
+  border-radius: 3px;
+  width: 12rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.container-footer{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px 0px 30px ;
+
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: MidnightBlue;
+  color: white;
+}
