@@ -25,13 +25,13 @@
     <script>
       function generateProductTemplate(product) {
         return `<div class=" product">
-          <a href="/finalWork/detailProduct.HTML?id=${product.id}">
+          <a href="/finalWork/APIEcommerce/detailProduct.HTML?id=${product.id}">
             <img src="${product.image}" />
             <div class="description-product">
              <p class="title-product">${product.title}</p>
              <div class="price-cart-product"> 
               <p class="price-product"  onclick="addToCart(${product.id})">€ ${product.price}</p>
-               <button class="cartButton" onclick="addToCart(${product.id})"><img class="img-cart-button" src="./assets/cart.png"/>
+               <button class="cartButton" onclick="addToCart(${product.id})"><img class="img-cart-button" src="../assets/cart.png"/>
                </button>
              </div>
             </div>
@@ -85,7 +85,6 @@
               block: 'start'
             })
           }
-    
         } catch (error) {
           console.error(error)
         }
