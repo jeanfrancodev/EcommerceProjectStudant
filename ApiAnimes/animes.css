@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #363636;
+  color: GhostWhite;
+  width: 100%;
+  font-size: 36px;
+  height: 5rem;
+  margin-bottom: 0.6rem;
+}
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+  margin: 0rem 2rem 0 2rem;
+}
+
+.container-anime {
+  background: aliceblue;
+  height: 5rem;
+  display: flex;
+  border-radius: 10px;
+  justify-content: flex-start;
+}
+.card-content {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 8px;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+.container-anime img {
+  width: 42px;
+  height: 60px;
+}
+
+.container-modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.modal {
+  z-index: 1;
+  /* left: 10%; */
+  position: relative;
+  width: 70%;
+  height: 90%;
+  margin: 1.5rem auto;
+  background-color: WhiteSmoke;
+  border-radius: 12px;
+  border: 2px solid black;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #0000008c;
+  backdrop-filter: blur(1px);
+  width: 100vw;
+  height: 100vh;
+}
+.modal-content {
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.header-modal {
+  color: black;
+  width: 97%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0rem 0 1rem;
+}
+.header-modal div h1 {
+  font-size: 28px;
+  margin: 0 0 2px 0;
+}
+
+.close {
+  color: Maroon;
+  float: right;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contents-modal {
+  display: flex;
+  gap: 2rem;
+}
+.contents-modal div {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.contents-modal div iframe {
+  width: 90%;
+}
+
+.contents-modal img {
+  width: 350px;
+  height: 517px;
+}
+.content-text-modal {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem auto;
+  overflow: scroll;
+}
+
+.synopsis-modal b {
+  font-size: 24px;
+}
+/* .studio-name-modal {
+  padding: 0 1rem 1rem 1rem;
+} */
+.studio-name-modal b {
+  font-size: 22px;
+}

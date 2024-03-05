@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Product</title>
+    <link rel="stylesheet" href="./detailProduct.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container-header">
+        <div class="container-header-left"></div>
+        <div class="container-header-right">
+          <a href="./homepageEcommerce.html"><p>HOME</p></a>
+        </div>
+      </div>
+    </header>
+    <div class="container"></div>
+    <footer>
+      <div id="current-time" class="container-footer">
+        <p>Copyright</p>
+      </div>
+    </footer>
+    <script>
+      const getYearOfDate = new Date().getFullYear()
+      const timeElement = document.getElementById('current-time')
+      const text = document.createTextNode(getYearOfDate.toString())
+      timeElement.append(text)
+      const url = window.location.href
+      urlId = url.split('?id=')
+      urlId = urlId[1]
+
+      function generateProductTemplate(product) {
+        return `<div class=" product">
+            <img src="${product.image}">
+            <div class="description-product">
+              <p class="title-product">${product.title}</p>
+              <p class="details-product">${product.description}</p>
+              <div class="price-cart-product">
+               <p class="price-product" onclick="addToCart(${product.id})">€ ${product.price}</p>
+               <button class="cartButton" onclick="addToCart(${product.id})">ADD TO CART</button>
+              </div>
+            </div>
+          </div>`
+      }
+      async function loadPag() {
+        let productReference
+
+        async function singleProduct() {
+          try {
+            const response = await fetch(
+              `https://fakestoreapi.com/products/${urlId}`
+            )
+            const infoProduct = await response.json()
+            productReference = infoProduct
+            const textCategoryElement =
+              document.getElementsByClassName('container-header')
+            const categoryText = document.createTextNode(
+              `${infoProduct.category}`
+            )
+            textCategoryElement[0].prepend(categoryText)
+
+            let ancorCategory = infoProduct.category.split(' ')
+            let ancor = ancorCategory[0].replace("'", ancorCategory[1])
+
+            const getAllProductCategory = document.getElementsByClassName(
+              'container-header-right'
+            )
+            getAllProductCategory[0].insertAdjacentHTML(
+              'beforeend',
+              '<a href="./homepageEcommerce.html#ancor-' +
+                ancor +
+                '"><p> More products?</p></a>'
+            )
+            const templateElement = generateProductTemplate(infoProduct)
+            const elementContainer =
+              document.getElementsByClassName('container')
+            elementContainer[0].insertAdjacentHTML('beforeend', templateElement)
+          } catch (error) {
+            console.error(error)
+          }
+        }
+        await singleProduct()
+
+        templateMoreProducts = product => {
+          return `<div class='card-related-products'>
+            <div>
+              <img src="${product.image}">
+              <p class="price-product">€ ${product.price}</p>
+            </div>
+            <p class="mini-card-title">${product.title}</p>
+          </div>`
+        }
+        async function relatedProducts() {
+          try {
+            const response = await fetch(`https://fakestoreapi.com/products/`)
+            const infoProduct = await response.json()
+
+            const elementContainer =
+              document.getElementsByClassName('container')
+            elementContainer[0].insertAdjacentHTML(
+              'beforeend',
+              '<div class="more-cards"></div>'
+            )
+            let maxContents = 0
+            infoProduct.forEach(product => {
+              if (
+                product.category === productReference.category &&
+                product.id !== productReference.id &&
+                maxContents < 3
+              ) {
+                maxContents++
+                const templateElement = templateMoreProducts(product)
+                const elementMoreCards =
+                  document.getElementsByClassName('more-cards')
+                elementMoreCards[0].insertAdjacentHTML(
+                  'beforeend',
+                  templateElement
+                )
+              }
+            })
+          } catch (error) {
+            console.log(error)
+          }
+        }
+        relatedProducts()
+      }
+      loadPag()
+      async function addToCart(productId) {
+        try {
+          const cartEndpoint = 'https://fakestoreapi.com/carts/7'
+          const date = new Date().toISOString().split('T')[0]
+
+          const cartItem = {
+            userId: 7,
+            date,
+            products: [{ productId, quantity: 1 }]
+          }
+
+          const response = await fetch(cartEndpoint, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cartItem)
+          })
+
+          if (response.ok) {
+            alert('Produto adicionado ao carrinho!')
+            console.log(cartItem.products)
+          } else {
+            console.error(
+              'Erro ao adicionar produto ao carrinho:',
+              response.statusText
+            )
+          }
+        } catch (error) {
+          console.error('Erro ao adicionar produto ao carrinho:', error)
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -2,16 +2,15 @@
 body {
   font-family: 'open sans';
 }
-.container{
+.container {
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 32.4rem;
-  width: 100%;
+  /* width: 100%;
   margin: 0 auto;
-  /* margin-bottom: 2.4rem; */
-  max-width: 1200px;
+   margin-bottom: 2.4rem;
+  max-width: 1200px; */
   gap: 2rem;
   background-color: #fafafb;
 }
@@ -26,13 +25,13 @@ body {
   background-color: MidnightBlue;
   color: white;
 }
-.container-header-right{
+.container-header-right {
   display: flex;
   gap: 16px;
 }
-a{
- color: white;
- font-size: 14px;
+a {
+  color: white;
+  font-size: 14px;
 }
 a:link {
   text-decoration: none;
@@ -56,7 +55,7 @@ a:hover {
   border-radius: 16px;
   margin: 1rem 3rem 1rem;
 }
-img {
+.product img {
   width: 250px;
   height: 380px;
   object-fit: contain;
@@ -70,7 +69,12 @@ img {
   font-size: 20px;
   font-weight: 600;
   text-align: start;
-  color: gray;
+  color: #1c1c1c;
+}
+.details-product {
+  width: 75%;
+  font-size: 14px;
+  color: #4f4f4f;
 }
 .price-cart-product {
   display: flex;
@@ -100,14 +104,51 @@ img {
   height: 2rem;
   cursor: pointer;
 }
-.container-footer{
+.container-footer {
   display: flex;
   justify-content: space-between;
-  padding: 0px 30px 0px 30px ;
-
+  padding: 0px 30px 0px 30px;
   align-items: center;
   font-size: 14px;
   font-weight: 600;
   background-color: MidnightBlue;
   color: white;
+}
+
+.more-cards {
+  display: flex;
+  max-height: 34rem;
+}
+.card-related-products {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid white;
+  background-color: white;
+  box-shadow: 0px 0px 3px 0px lightgray;
+  border-radius: 16px;
+  margin: 1rem 1rem 2rem;
+  width: 30%;
+}
+.card-related-products:hover {
+  box-shadow: 0px 0px 6px 0px gray;
+}
+.card-related-products img {
+  width: 270px;
+  height: 300px;
+  object-fit: contain;
+}
+.card-related-products div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.mini-card-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: start;
+  color: gray;
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ecommerce API</title>
     <link rel="stylesheet" href="./homepageEcommerce.css" />
     <link rel="detailProduct" href="./detailProduct.html" />
   </head>
@@ -47,11 +47,13 @@
           infoProducts.forEach(product => {
             if (product.category !== categoryProduct) {
               let ancorCategory = product.category.split(' ')
+              let ancor = ancorCategory[0].replace("'", ancorCategory[1])
+
               const titleCategory = document.getElementsByClassName('container')
               titleCategory[0].insertAdjacentHTML(
                 'beforeend',
                 '<a id="ancor-' +
-                  ancorCategory.join('-') +
+                  ancor +
                   '"><div class="title-category">' +
                   product.category +
                   '</div></a>'
@@ -62,7 +64,7 @@
               navBarCategory[0].insertAdjacentHTML(
                 'beforeend',
                 '<a href="#ancor-' +
-                  ancorCategory.join('-') +
+                  ancor +
                   '"><p>' +
                   product.category +
                   '</p></a>'
@@ -83,6 +85,7 @@
               block: 'start'
             })
           }
+    
         } catch (error) {
           console.error(error)
         }
