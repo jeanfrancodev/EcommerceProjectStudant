@@ -27,7 +27,6 @@ const templateCard = anime => {
 }
 
 //Modal
-//,,,,,
 const templateModal = anime => {
   const playVideo = anime.trailer.embed_url
     ? `<iframe width="530" height="300" src="${anime.trailer.embed_url}" title="YouTube video 
