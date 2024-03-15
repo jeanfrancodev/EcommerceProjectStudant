@@ -6,11 +6,9 @@ async function animesList() {
     const animeScore = dataAnime.filter(scores => scores.score > 9)
     animeScore.forEach((singleAnime, index) => {
       const templateElement = templateCard(singleAnime)
-      const templateModalElement = templateModal(singleAnime)
       const elementContainer = document.getElementsByClassName('container')
       elementContainer[0].insertAdjacentHTML('beforeend', templateElement)
-      elementContainer[0].insertAdjacentHTML('beforeend', templateModalElement)
-      modalFeatures(index)
+      modalFeatures(singleAnime, index)
     })
   } catch (error) {
     console.error(error)
@@ -37,8 +35,10 @@ const templateModal = anime => {
      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
      allowfullscreen>
     </iframe>`
-    : ''
-
+    : '<p>Trailer not found.</p>'
+  const yearAnime = anime.year
+    ? `<p> ${anime.year} - ${anime.episodes} ep - ${anime.duration}</p>`
+    : `<p> ${anime.episodes} ep - ${anime.duration}</p>`
   return `
   <div class="container-modal">
     <div class="overlay" ></div>
@@ -46,7 +46,7 @@ const templateModal = anime => {
         <div class="header-modal">
           <div>
             <h1> ${anime.title}</h1>
-            <h4> ${anime.year} - ${anime.episodes} ep - ${anime.duration}</h4>
+           ${yearAnime}
           </div>
           <span class="close">&times;</span>
         </div>
@@ -64,21 +64,21 @@ const templateModal = anime => {
     </div>`
 }
 
-const modalFeatures = index => {
-  const modal = document.getElementsByClassName('container-modal')
+const modalFeatures = (singleAnime, index) => {
   const activeModal = document.getElementsByClassName('card-content')
-  const btnCloseModal = document.getElementsByClassName('close')
+  const templateModalElement = templateModal(singleAnime)
 
   activeModal[index].addEventListener('click', () => {
-    modal[index].style.display = 'block'
-  })
+    const modalContainer = document.getElementById('modal-anime')
+    modalContainer.innerHTML = templateModalElement
 
-  btnCloseModal[index].addEventListener('click', () => {
-    modal[index].style.display = 'none'
-  })
-
-  const closeModal = document.getElementsByClassName('overlay')
-  closeModal[index].addEventListener('click', () => {
-    modal[index].style.display = 'none'
+    const btnCloseModal = document.getElementsByClassName('close')
+    btnCloseModal[0].addEventListener('click', () => {
+      modalContainer.innerHTML = ''
+    })
+    const closeModal = document.getElementsByClassName('overlay')
+    closeModal[0].addEventListener('click', () => {
+      modalContainer.innerHTML = ''
+    })
   })
 }
